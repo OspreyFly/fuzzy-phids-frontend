@@ -1,0 +1,14 @@
+.order-list {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.order-list.expanded {
+    padding-left: 20px; /* Adjust based on your design */
+}
+
+/* Optional: Add a transition effect for smoother expansion/collapse */
+.order-list {
+    transition: max-height 0.5s ease-out;
+}
