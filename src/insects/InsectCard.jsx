@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./InsectCard.css";
 
@@ -8,19 +8,26 @@ import "./InsectCard.css";
  *
  * InsectList -> InsectCard
  */
-function InsectCard(props) {
+const InsectCard = ({ id, species, price, url_image, addToCart, removeFromCart }) => {
     const location = useLocation();
     const isCheckoutRoute = location.pathname === '/checkout';
+    const handleAddClick = () => {
+        addToCart({ id, species, price, url_image });
+    }
+    const handleRemoveClick = () => {
+        removeFromCart(id);
+    }
 
     return (
         <div className="InsectCard card">
             <div className="card-body">
                 <h6 className="card-title">
-                    {props.species}
-                    {props.url_image && <img src={props.url_image} alt={props.species} className="float-right ml-5" />}
+                    {species}
+                    {url_image && <img src={url_image} alt={species} className="float-right ml-5" />}
                 </h6>
-                <h3>${props.price}</h3>
-                {!isCheckoutRoute && <button onClick={props.addToCart(props.id, props.species, props.price, props.url_image)}>Add to Cart</button>}
+                <h3>${price}</h3>
+                {!isCheckoutRoute && <button onClick={handleAddClick}>Add to Cart</button>}
+                {isCheckoutRoute && <button onClick={handleRemoveClick}>Remove</button>}
             </div>
         </div>
     );

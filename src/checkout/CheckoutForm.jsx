@@ -1,20 +1,34 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
 import UserContext from '../auth/UserContext';
 import FuzzyApi from '../api/FuzzyApi';
 
-const CheckoutForm = () => {
-    const [currentUser] = useContext(UserContext);
+const CheckoutForm = ({ cart, setCart }) => {
+    const { currentUser } = useContext(UserContext);
     const [showSuccessPopup, setShowSuccessPopup] = useState(false);
     const [popupMessage, setPopupMessage] = useState('');
     const [formData, setFormData] = useState({
         phone: '',
         delivery_address: '',
-        submit_time: '',
-        total: total,
-        items: shopCart,
-        user_order_id: currentUser.id,
+        items: cart,
+        user_order_id: currentUser.id
     });
+
+    useEffect(() => {
+        // Calculate the total after the component has mounted
+        const total = getTotal();
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            total: total,
+        }));
+    }, [cart]); // Empty dependency array means this effect runs once after mounting
+
+    function getTotal() {
+        let total = 0;
+        for (let item of cart) {
+            total += +item.price;
+        }
+        return total;
+    }
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -27,9 +41,10 @@ const CheckoutForm = () => {
         if (isValid(formData)) {
             try {
                 console.log('Form is valid, proceed with submission.');
-                let new_order = await FuzzyApi.createOrder({ formData });
+                const res = await FuzzyApi.createOrder({ ...formData });
                 setShowSuccessPopup(true);
                 setPopupMessage('Your order was submitted successfully!');
+                setCart([]);
             } catch (e) {
                 console.error(e);
                 setShowSuccessPopup(true);
@@ -42,16 +57,11 @@ const CheckoutForm = () => {
     };
 
     const isValid = (data) => {
-        // Implement validation logic here
-        // For simplicity, this example only checks if strings are not empty
-        return (
-            data.phone &&
-            data.delivery_address &&
-            data.submit_time &&
-            data.total >= 0 &&
-            data.items &&
-            data.user_order_id >= 0
-        );
+        if (data.phone && data.delivery_address) {
+            return true;
+        }
+
+
     };
 
     return (

@@ -1,39 +1,75 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import InsectList from '../insects/InsectList';
 import CheckoutList from './CheckoutList';
 
 function Shopping() {
-    const [shopping, setShopping] = useState(true);
-    const [cart, setCart] = useState([]);
-    console.log("State Init", shopping, cart);
-    function getCart() {
-        return cart;
-    }
-    // Function to add an insect to the cart
+    const [cart, setCart] = useState(() => {
+        // Try to get the cart from Local Storage and parse it
+        const savedCart = localStorage.getItem('shoppingCart');
+        if (savedCart) {
+            return JSON.parse(savedCart);
+        } else {
+            return []; // Return an empty array if nothing is found
+        }
+    });
+    const location = useLocation();
+
+    useEffect(() => {
+        // Clear the old cart from Local Storage
+        localStorage.removeItem('shoppingCart');
+
+        // Set the new cart to Local Storage
+        if (cart.length > 0) {
+            localStorage.setItem('shoppingCart', JSON.stringify(cart));
+        }
+    }, [cart]); // Dependency array includes `cart` to run effect when it changes
+
+
+
+
     function addToCart(insect) {
-        setCart([...cart, insect]); // Spread operator to create a new array with the added insect
+        // Check if the cart already contains the insect
+        const isInCart = cart.some(existingInsect => existingInsect.id === insect.id);
+
+        if (!isInCart) {
+            // Only add the insect if it's not already in the cart
+            setCart(prevCart => [...prevCart, insect]);
+            console.log("Added To Cart: ", insect);
+        } else {
+            console.log("Insect is already in the cart.");
+        }
     }
 
-    // Function to remove an insect from the cart
+
     function removeFromCart(insectId) {
-        setCart(cart.filter(insect => insect.id !== insectId)); // Filter out the insect with the matching id
+        console.log("Removing From Cart: ", insectId);
+        setCart(currentCart => currentCart.filter(insect => insect.id !== insectId));
+
     }
 
-    function getShoppingMode() {
-        return shopping;
+    function getTotal() {
+        let total = 0;
+        for (let item of cart) {
+            total += +item.price;
+        }
+        return total;
     }
 
-    // Toggle shopping mode
-    function toggleShoppingMode() {
-        setShopping(!shopping); // Toggle the shopping state
+    function getSummary() {
+        let summary = `Items: ${cart.length} Total: $${getTotal(cart)}`;
+        return <span>{summary}</span>;
     }
-
-    // Pass methods as props to child components
-    return (
-        shopping ?
-            <InsectList getCart={getCart} addToCart={addToCart} getShoppingMode={getShoppingMode} toggleShoppingMode={toggleShoppingMode} /> :
-            <CheckoutList getCart={getCart} addToCart={addToCart} removeFromCart={removeFromCart} toggleShoppingMode={toggleShoppingMode} />
-    );
+    console.log(location);
+    if (location.pathname === "/insects") {
+        return (
+            <InsectList getSummary={getSummary} cart={cart} setCart={setCart} addToCart={addToCart} />
+        );
+    } else {
+        return (
+            <CheckoutList getSummary={getSummary} cart={cart} setCart={setCart} addToCart={addToCart} removeFromCart={removeFromCart} />
+        );
+    }
 }
 
 export default Shopping;

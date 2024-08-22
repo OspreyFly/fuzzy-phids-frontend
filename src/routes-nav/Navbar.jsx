@@ -15,25 +15,15 @@ function Navigation({ logout }) {
     const { currentUser } = useContext(UserContext);
     function loggedInNav() {
         return (
-            <ul id="nav-list">
+            <>
                 <li>
                     <NavLink to="/insects">
-                        Insects
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/orders">
-                        Orders
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/profile">
-                        Profile
+                        Browse
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to="/checkout">
-                        Your Shopping Cart
+                        Check-Out
                     </NavLink>
                 </li>
                 <li>
@@ -41,16 +31,21 @@ function Navigation({ logout }) {
                         Log out {currentUser ? "" : currentUser.username}
                     </Link>
                 </li>
-            </ul>
+            </>
         );
     }
 
     function loggedOutNav() {
         return (
-            <ul id="nav-list">
+            <>
                 <li>
                     <NavLink to="/insects">
-                        Insects
+                        Browse
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/checkout">
+                        Check-Out
                     </NavLink>
                 </li>
                 <li>
@@ -63,7 +58,7 @@ function Navigation({ logout }) {
                         Sign Up
                     </NavLink>
                 </li>
-            </ul>
+            </>
         );
     }
 
@@ -71,10 +66,10 @@ function Navigation({ logout }) {
         <div>
             <h1>Sid's Fuzzy Phids</h1>
             <nav id="nav-container">
-                <Link to="/">
-                    Home
-                </Link>
-                {currentUser ? loggedInNav() : loggedOutNav()}
+                <ul id="nav-list">
+                    <li><Link to="/">Home</Link></li>
+                    {currentUser.id !== -1 ? loggedInNav() : loggedOutNav()}
+                </ul>
             </nav>
         </div>
     );

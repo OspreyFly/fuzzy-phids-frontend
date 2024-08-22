@@ -3,36 +3,27 @@ import InsectCard from '../insects/InsectCard';
 import LoadingSpinner from '../common/LoadingSpinner';
 import CheckoutForm from './CheckoutForm';
 
-function CheckoutList(props) {
-    console.log("State Init", shopping, cart);
-    const cart = props.getCart();
+const CheckoutList = ({ getSummary, cart, shopping, setCart, addToCart, removeFromCart }) => {
     if (!cart || cart.length < 1) return <LoadingSpinner />;
-
-    function getTotal(cart) {
-        let total = 0;
-        for (let item of cart) {
-            total += item.price;
-        }
-        return total;
-    }
-
     return (
         <div className="col-md-8 offset-md-2">
-            <div className="cart">
+            {getSummary()}
+            <div>
                 {cart.map(c => (
                     <InsectCard
-                        key={c.id}
+                        id={c.id}
                         species={c.species}
                         price={c.price}
                         url_image={c.url_image}
-                        removeFromCart={props.removeFromCart}
+                        addToCart={addToCart}
+                        removeFromCart={removeFromCart}
+                        shopping={shopping}
                     />
                 ))}
             </div>
             <div className="total-price">
-                Total: $ {getTotal(cart)}
             </div>
-            <CheckoutForm />
+            <CheckoutForm cart={cart} setCart={setCart} />
         </div>
     );
 }

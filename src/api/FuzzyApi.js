@@ -44,8 +44,8 @@ class FuzzyApi {
       const result = await axios({
         url,
         method,
-        data,
-        params: data,
+        data: method === "get" ? null : data, // Only send data for non-GET requests
+        params: method === "get" ? data : null, // Only use params for GET requests
         headers
       });
 
