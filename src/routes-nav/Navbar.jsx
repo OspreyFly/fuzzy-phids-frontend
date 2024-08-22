@@ -64,7 +64,7 @@ function Navigation({ logout }) {
 
     return (
         <div>
-            <h1>Sid's Fuzzy Phids</h1>
+            <h1 id="title">Sid's Fuzzy Phids</h1>
             <nav id="nav-container">
                 <ul id="nav-list">
                     <li><Link to="/">Home</Link></li>

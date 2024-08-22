@@ -1,0 +1,22 @@
+body {
+    background-color:#0F0F0F;
+    font-family: "Rubik Bubbles", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.animated-plus-button {
+    position: relative;
+    background-color: #000000; /* Example color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 24px;
+    transition: background-color 0.3s ease-in-out, font-size 0.3s ease-in-out; /* Added font-size transition */
+}
+  
+  .animated-plus-button:hover {
+    font-size: 36px; /* Increase font size on hover */
+  }
+  

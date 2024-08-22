@@ -3,6 +3,7 @@ import SearchForm from "../common/SearchForm";
 import FuzzyApi from "../api/FuzzyApi";
 import InsectCard from "./InsectCard";
 import LoadingSpinner from "../common/LoadingSpinner";
+import "./InsectList.css";
 
 /** Show page with list of insects.
  *
@@ -37,9 +38,10 @@ function InsectList({ getSummary, addToCart, removeFromCart, updateShoppingMode 
     if (!insects) return <LoadingSpinner />;
 
     return (
-        <div className="Insect-list col-md-8 offset-md-2">
+        <div className="col-md-8 offset-md-2">
             <SearchForm searchFor={search} />
             {getSummary()}
+            <br />
             {insects.length
                 ? (
                     <div className="Insect-list">

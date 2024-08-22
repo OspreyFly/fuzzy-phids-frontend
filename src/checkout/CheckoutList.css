@@ -1,0 +1,25 @@
+.Checkout-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between cards */
+    background-color: #0F0F0F;
+  }
+  
+  .Checkout-list .card {
+    flex: 1 0 21%; /* Flex basis for 4 cards per row */
+    min-width: 250px; /* Minimum width of each card */
+    max-width: 250px; /* Maximum width of each card */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+  }
+  
+  .Checkout-list p.lead {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 20px;
+  }
+
+  #summary {
+    color: #008170;
+  }

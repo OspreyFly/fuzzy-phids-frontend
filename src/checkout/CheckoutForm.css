@@ -1,0 +1,24 @@
+.checkout-form {
+    background-color: #008170; /* Light grey background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,91,65,0.5);
+    margin-top: 20px; /* Space from the last item */
+    text-align: center; /* Center text */
+    border: white solid 1px;
+  }
+  
+  .checkout-form input {
+    background-color: #ffffff; /* Blue background */
+    font-size:30px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+  }
+  
+  .checkout-form input[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }

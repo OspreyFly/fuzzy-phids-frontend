@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import UserContext from '../auth/UserContext';
 import FuzzyApi from '../api/FuzzyApi';
+import './CheckoutForm.css';
 
 const CheckoutForm = ({ cart, setCart }) => {
     const { currentUser } = useContext(UserContext);
@@ -66,11 +67,11 @@ const CheckoutForm = ({ cart, setCart }) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form class="checkout-form" onSubmit={handleSubmit}>
                 {/* Phone */}
                 <div>
                     <label htmlFor="phone">Phone:</label>
-                    <input
+                    <input class="checkout-form"
                         type="text"
                         id="phone"
                         name="phone"
