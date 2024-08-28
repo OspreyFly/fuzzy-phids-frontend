@@ -21,6 +21,7 @@ function SignupForm({ signup }) {
         email: "",
     });
     const [formErrors, setFormErrors] = useState([]);
+    const [inputError, setInputError] = useState("");
 
     /** Handle form submit:
      *
@@ -29,6 +30,11 @@ function SignupForm({ signup }) {
 
     async function handleSubmit(evt) {
         evt.preventDefault();
+        if (formData.password.length < 5) {
+            setInputError("Password must be at least 5 characters in length!");
+            return;
+        }
+        setInputError("");
         let result = await signup(formData);
         if (result.success) {
             navigate("/insects"); // Replaces history.push("/insects")
@@ -68,6 +74,7 @@ function SignupForm({ signup }) {
                                     value={formData.password}
                                     onChange={handleChange}
                                 />
+                                {inputError && <p style={{ color: "red" }}>{inputError}</p>}
                             </div>
                             <div className="form-group">
                                 <label>Email</label>
