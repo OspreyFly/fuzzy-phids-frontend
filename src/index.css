@@ -19,4 +19,48 @@ body {
   .animated-plus-button:hover {
     font-size: 36px; /* Increase font size on hover */
   }
+
+  .animated-plus-button-disabled {
+    background-color: #d3d3d3; /* Light gray background */
+    color: #a9a9a9; /* Darker gray text color */
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+    opacity: 0.6; /* Make it semi-transparent to show it's disabled */
+    pointer-events: none; /* Disable all interactions */
+    transition: opacity 0.3s ease;
+}
+
+.animated-plus-button-disabled:hover {
+    opacity: 0.6; /* No hover effect for disabled button */
+}
   
+  .animated-minus-button {
+    position: relative;
+    background-color: #ff4d4d; /* Red color to indicate removal */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.animated-minus-button:hover {
+    background-color: #ff3333;
+    transform: scale(1.1);
+}
+
+.animated-minus-button:active {
+    transform: scale(0.9);
+}

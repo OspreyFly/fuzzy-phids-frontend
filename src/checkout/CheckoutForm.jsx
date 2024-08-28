@@ -67,11 +67,11 @@ const CheckoutForm = ({ cart, setCart }) => {
 
     return (
         <>
-            <form class="checkout-form" onSubmit={handleSubmit}>
+            <form className="checkout-form" onSubmit={handleSubmit}>
                 {/* Phone */}
                 <div>
                     <label htmlFor="phone">Phone:</label>
-                    <input class="checkout-form"
+                    <input className="checkout-form"
                         type="text"
                         id="phone"
                         name="phone"

@@ -15,9 +15,8 @@ import "./InsectList.css";
  * Routes -> { InsectCard, SearchForm }
  */
 
-function InsectList({ getSummary, addToCart, removeFromCart, updateShoppingMode }) {
+function InsectList({ cart, getSummary, addToCart, removeFromCart }) {
     const [insects, setInsects] = useState(null);
-    console.log(insects);
     // Search and pass on most recent cart and shopping mode state on init
     useEffect(() => {
         search();
@@ -52,6 +51,7 @@ function InsectList({ getSummary, addToCart, removeFromCart, updateShoppingMode 
                                 species={c.species}
                                 price={c.price}
                                 url_image={c.url_image}
+                                cart={cart}
                                 addToCart={addToCart}
                                 removeFromCart={removeFromCart}
                             />

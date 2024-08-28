@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./InsectCard.css";
 
@@ -8,11 +8,26 @@ import "./InsectCard.css";
  *
  * InsectList -> InsectCard
  */
-const InsectCard = ({ id, species, price, url_image, addToCart, removeFromCart }) => {
-    const location = useLocation();
-    const isCheckoutRoute = location.pathname === '/checkout';
+const InsectCard = ({ id, species, price, url_image, cart, addToCart, removeFromCart }) => {
+    const [isDisabled, setIsDisabled] = useState(false);
+
+    useEffect(() => {
+        // Check if the insectId exists in the cart
+        const insectInCart = cart.some(item => item.id === id);
+
+        // Set isDisabled to true if the insect is in the cart
+        if (insectInCart) {
+            setIsDisabled(true);
+        } else {
+            setIsDisabled(false);
+        }
+    }, [cart, id]); // Re-run the check whenever the cart or insectId changes
+
     const handleAddClick = () => {
-        addToCart({ id, species, price, url_image });
+        if (!isDisabled) {
+            setIsDisabled(true);
+            addToCart({ id, species, price, url_image });
+        }
     }
     const handleRemoveClick = () => {
         removeFromCart(id);
@@ -26,8 +41,8 @@ const InsectCard = ({ id, species, price, url_image, addToCart, removeFromCart }
                     {url_image && <img src={url_image} alt={species} className="float-right ml-5" />}
                 </h6>
                 <h3>${price}</h3>
-                {!isCheckoutRoute && <button class="animated-plus-button" onClick={handleAddClick}>+</button>}
-                {isCheckoutRoute && <button onClick={handleRemoveClick}>Remove</button>}
+                {!isDisabled && <button className="animated-plus-button" onClick={handleAddClick}>+</button>}
+                {isDisabled && <button className="animated-minus-button" onClick={handleRemoveClick}>-</button>}
             </div>
         </div>
     );

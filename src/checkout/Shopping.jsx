@@ -63,7 +63,7 @@ function Shopping() {
     console.log(location);
     if (location.pathname === "/insects") {
         return (
-            <InsectList getSummary={getSummary} cart={cart} setCart={setCart} addToCart={addToCart} />
+            <InsectList getSummary={getSummary} cart={cart} setCart={setCart} addToCart={addToCart} removeFromCart={removeFromCart} />
         );
     } else {
         return (
