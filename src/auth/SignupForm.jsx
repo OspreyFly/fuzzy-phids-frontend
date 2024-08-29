@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Alert from "../common/Alert";
-
+import "./auth.css";
 /** Signup form.
  *
  * Shows form and manages update to state on changes.
