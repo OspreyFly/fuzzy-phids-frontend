@@ -5,7 +5,6 @@
     justify-content: center;
     align-items: center;
     gap: 20px; /* Space between cards */
-    background-color: #0F0F0F;
   }
   
   .Insect-list .card {
@@ -21,7 +20,8 @@
     margin-top: 20px;
   }
 
-  #summary {
-    color: #008170;
+  .summary {
+    color: white;
+    text-align: center;
   }
   

@@ -4,7 +4,6 @@
     justify-content: center;
     align-items: center;
     gap: 20px; /* Space between cards */
-    background-color: #0F0F0F;
   }
   
   .Checkout-list .card {
@@ -26,4 +25,8 @@
 
   .warning {
     color: #008170; 
+  }
+
+  h3 {
+    text-align: center;
   }

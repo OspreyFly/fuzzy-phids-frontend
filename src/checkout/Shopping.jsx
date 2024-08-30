@@ -58,7 +58,7 @@ function Shopping() {
 
     function getSummary() {
         let summary = `Items: ${cart.length} Total: $${getTotal(cart)}`;
-        return <h3 id="summary">{summary}</h3>;
+        return <h3>{summary}</h3>;
     }
     console.log(location);
     if (location.pathname === "/insects") {

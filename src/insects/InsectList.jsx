@@ -38,9 +38,12 @@ function InsectList({ cart, getSummary, addToCart, removeFromCart }) {
 
     return (
         <div className="col-md-8 offset-md-2">
-            <SearchForm searchFor={search} />
-            {getSummary()}
-            <br />
+            <div className="summary">
+                <SearchForm searchFor={search} />
+                {getSummary()}
+                <br />
+            </div>
+
             {insects.length
                 ? (
                     <div className="Insect-list">
