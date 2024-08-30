@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 import "./Navbar.css";
 
@@ -13,6 +13,12 @@ import "./Navbar.css";
 
 function Navigation({ logout }) {
     const { currentUser } = useContext(UserContext);
+    const navigate = useNavigate();
+
+    function handleHomeClick() {
+        navigate('/', { replace: true, state: { forceReload: true } });
+    }
+
     function loggedInNav() {
         return (
             <>
@@ -67,7 +73,7 @@ function Navigation({ logout }) {
             <h1 id="title">Sid's Fuzzy Phids</h1>
             <nav id="nav-container">
                 <ul id="nav-list">
-                    <li><Link to="/">Home</Link></li>
+                    <li onClick={handleHomeClick}>Home</li>
                     {currentUser.id !== -1 ? loggedInNav() : loggedOutNav()}
                 </ul>
             </nav>
