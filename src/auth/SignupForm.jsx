@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Alert from "../common/Alert";
+import FuzzyApi from "../api/FuzzyApi";
 import "./auth.css";
 /** Signup form.
  *
@@ -21,7 +22,11 @@ function SignupForm({ signup }) {
         email: "",
     });
     const [formErrors, setFormErrors] = useState([]);
-    const [inputError, setInputError] = useState("");
+
+    function validateEmail(email) {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailRegex.test(email);
+    }
 
     /** Handle form submit:
      *
@@ -30,16 +35,29 @@ function SignupForm({ signup }) {
 
     async function handleSubmit(evt) {
         evt.preventDefault();
-        if (formData.password.length < 5) {
-            setInputError("Password must be at least 5 characters in length!");
+        setFormErrors([]);
+
+        if (!formData.username) {
+            setFormErrors(["Username must be 1-30 Characters long!"]);
             return;
         }
-        setInputError("");
-        let result = await signup(formData);
-        if (result.success) {
-            navigate("/insects"); // Replaces history.push("/insects")
-        } else {
-            setFormErrors(result.errors);
+        if (formData.password.length < 5) {
+            setFormErrors([...formErrors, "Password must be at least 5 characters in length!"]);
+            return;
+        }
+        if (!validateEmail(formData.email)) {
+            setFormErrors([...formErrors, "Email must match expected format: sample@sample.com"]);
+            return;
+        }
+        try {
+            const result = await signup(formData);
+            if (result.success) {
+                navigate("/insects");
+            } else {
+                setFormErrors([...formErrors, "That account already exists or there has been a backend error."]);
+            }
+        } catch (e) {
+            console.warn(e);
         }
     }
 
@@ -74,7 +92,6 @@ function SignupForm({ signup }) {
                                     value={formData.password}
                                     onChange={handleChange}
                                 />
-                                {inputError && <p style={{ color: "red" }}>{inputError}</p>}
                             </div>
                             <div className="form-group">
                                 <label>Email</label>
