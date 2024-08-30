@@ -27,11 +27,21 @@ function SearchForm({ searchFor }) {
         // Prevent default form submission behavior
         evt.preventDefault();
 
+
         // Trim the search term and call the search function
         const trimmedSearchTerm = searchTerm.trim();
+
+        if (!trimmedSearchTerm || trimmedSearchTerm === '') {
+            searchFor();
+        }
         if (trimmedSearchTerm) {
             searchFor(trimmedSearchTerm);
         }
+    }
+
+    function handleFilterClear() {
+        setSearchTerm("");
+        searchFor();
     }
 
     return (
@@ -46,6 +56,9 @@ function SearchForm({ searchFor }) {
                 />
                 <button type="submit" className="btn btn-lg btn-primary">
                     Submit
+                </button>
+                <button type="button" onClick={handleFilterClear} className="btn btn-lg">
+                    Clear Filters
                 </button>
             </form>
         </div>
