@@ -1,83 +1,90 @@
 body {
-    font-family: "Rubik Bubbles", system-ui;
-    font-weight: 400;
-    font-style: normal;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-family: "Rubik Bubbles", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+
+  filter: drop-shadow(0px 0px 1px black); /* Inner shadow effect */
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  margin: 0;
+  padding: 0;
+
+  background-image: url("https://www.earth.com/assets/_next/image/?url=https%3A%2F%2Fcff2.earth.com%2Fuploads%2F2024%2F02%2F14101624%2Famazon_rainforest_approaching-widespread-collapse_1m-1400x850.jpg&w=1080&q=75");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .animated-plus-button {
-    position: relative;
-    background-color: #000000; /* Example color */
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 10px 20px;
-    font-size: 24px;
-    transition: background-color 0.3s ease-in-out, font-size 0.3s ease-in-out; /* Added font-size transition */
+  position: relative;
+  background-color: #000000; /* Example color */
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 24px;
+  transition: background-color 0.3s ease-in-out, font-size 0.3s ease-in-out; /* Added font-size transition */
 }
-  
-  .animated-plus-button:hover {
-    font-size: 36px; /* Increase font size on hover */
-  }
 
-  .animated-plus-button-disabled {
-    background-color: #d3d3d3; /* Light gray background */
-    color: #a9a9a9; /* Darker gray text color */
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: not-allowed; /* Change cursor to indicate it's not clickable */
-    opacity: 0.6; /* Make it semi-transparent to show it's disabled */
-    pointer-events: none; /* Disable all interactions */
-    transition: opacity 0.3s ease;
+.animated-plus-button:hover {
+  font-size: 36px; /* Increase font size on hover */
+}
+
+.animated-plus-button-disabled {
+  background-color: #d3d3d3; /* Light gray background */
+  color: #a9a9a9; /* Darker gray text color */
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+  opacity: 0.6; /* Make it semi-transparent to show it's disabled */
+  pointer-events: none; /* Disable all interactions */
+  transition: opacity 0.3s ease;
 }
 
 .animated-plus-button-disabled:hover {
-    opacity: 0.6; /* No hover effect for disabled button */
+  opacity: 0.6; /* No hover effect for disabled button */
 }
-  
-  .animated-minus-button {
-    position: relative;
-    background-color: #ff4d4d; /* Red color to indicate removal */
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+
+.animated-minus-button {
+  position: relative;
+  background-color: #ff4d4d; /* Red color to indicate removal */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .animated-minus-button:hover {
-    background-color: #ff3333;
-    transform: scale(1.1);
+  background-color: #ff3333;
+  transform: scale(1.1);
 }
 
 .animated-minus-button:active {
-    transform: scale(0.9);
+  transform: scale(0.9);
 }
 
 .container {
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   z-index: -1;
-  
-  background-image: url("https://www.earth.com/assets/_next/image/?url=https%3A%2F%2Fcff2.earth.com%2Fuploads%2F2024%2F02%2F14101624%2Famazon_rainforest_approaching-widespread-collapse_1m-1400x850.jpg&w=1080&q=75");
-  background-size: cover;
-  background-position: center;
 }
 
 .overlay {
@@ -88,14 +95,4 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity as needed */
   backdrop-filter: blur(8px); /* Optional: adds a subtle blur effect */
-}
-
-.background-image {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
 }

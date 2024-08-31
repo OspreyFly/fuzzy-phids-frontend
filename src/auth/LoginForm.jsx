@@ -32,6 +32,14 @@ function LoginForm({ login }) {
         evt.preventDefault();
         setFormErrors([]);
         try {
+            const result = await FuzzyApi.getCurrentUser(formData.username);
+            console.log(result);
+            if (!result) return;
+        } catch (e) {
+            setFormErrors([...formErrors, `User Doesn't Exist: ${formData.username}`]);
+            return;
+        }
+        try {
             const result = await login(formData);
             if (result.success) {
                 navigate("/insects");
