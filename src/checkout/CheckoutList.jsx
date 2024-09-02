@@ -4,7 +4,7 @@ import LoadingSpinner from '../common/LoadingSpinner';
 import CheckoutForm from './CheckoutForm';
 import './CheckoutList.css';
 
-const CheckoutList = ({ getSummary, cart, shopping, setCart, addToCart, removeFromCart }) => {
+const CheckoutList = ({ currentUser, getSummary, cart, shopping, setCart, addToCart, removeFromCart }) => {
     if (!cart) return <LoadingSpinner />;
     if (cart.length < 1) return <div><h1 className="warning">Your cart is empty!</h1></div>;
     return (
@@ -26,7 +26,7 @@ const CheckoutList = ({ getSummary, cart, shopping, setCart, addToCart, removeFr
             </div>
             <div className="total-price">
             </div>
-            <CheckoutForm cart={cart} setCart={setCart} />
+            <CheckoutForm currentUser={currentUser} cart={cart} setCart={setCart} />
         </div>
     );
 }

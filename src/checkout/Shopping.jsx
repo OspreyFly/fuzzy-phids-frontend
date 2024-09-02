@@ -3,10 +3,10 @@ import { useLocation } from 'react-router-dom';
 import InsectList from '../insects/InsectList';
 import CheckoutList from './CheckoutList';
 
-function Shopping() {
+function Shopping({ currentUser }) {
     const [cart, setCart] = useState(() => {
         // Try to get the cart from Local Storage and parse it
-        const savedCart = localStorage.getItem('shoppingCart');
+        const savedCart = localStorage.getItem('shoppingCart') || '[]';
         if (savedCart) {
             return JSON.parse(savedCart);
         } else {
@@ -67,7 +67,7 @@ function Shopping() {
         );
     } else {
         return (
-            <CheckoutList getSummary={getSummary} cart={cart} setCart={setCart} addToCart={addToCart} removeFromCart={removeFromCart} />
+            <CheckoutList currentUser={currentUser} getSummary={getSummary} cart={cart} setCart={setCart} addToCart={addToCart} removeFromCart={removeFromCart} />
         );
     }
 }

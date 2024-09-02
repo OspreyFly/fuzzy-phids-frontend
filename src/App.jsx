@@ -91,8 +91,8 @@ function App() {
   return (
     <UserContext.Provider value={{ currentUser, setCurrentUser }}>
       <div className="App">
-        <Navigation logout={logout} />
-        <AllRoutes login={login} signup={signup} />
+        <Navigation currentUser={currentUser} logout={logout} />
+        <AllRoutes currentUser={currentUser} setCurrentUser={setCurrentUser} login={login} signup={signup} />
       </div>
     </UserContext.Provider>
   );

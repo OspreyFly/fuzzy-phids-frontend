@@ -1,11 +1,10 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import UserContext from '../auth/UserContext';
 import FuzzyApi from '../api/FuzzyApi';
 import './CheckoutForm.css';
 import { useNavigate } from 'react-router-dom';
 
-const CheckoutForm = ({ cart, setCart }) => {
-    const { currentUser } = useContext(UserContext);
+const CheckoutForm = ({ currentUser, cart, setCart }) => {
     const [showSuccessPopup, setShowSuccessPopup] = useState(false);
     const [popupMessage, setPopupMessage] = useState('');
     const navigate = useNavigate();

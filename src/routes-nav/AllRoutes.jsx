@@ -17,18 +17,16 @@ import PrivateRoute from "./PrivateRoute";
  * Visiting a non-existant route redirects to the homepage.
  */
 
-function AllRoutes({ login, signup }) {
+function AllRoutes({ currentUser, setCurrentUser, login, signup }) {
 
     return (
         <div className="pt-5">
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/login" element={<LoginForm login={login} />} />
-                <Route path="/signup" element={<SignupForm signup={signup} />} />
-                <Route path="/insects" element={<Shopping />} />
-                <Route path="/checkout" element={<Shopping />} />
-                <Route path="/orders" element={<PrivateRoute component={<OrderList />} />} />
-                <Route path="/profile" element={<PrivateRoute component={<ProfileDashboard />} />} />
+                <Route path="/login" element={<LoginForm setCurrentUser={setCurrentUser} login={login} />} />
+                <Route path="/signup" element={<SignupForm setCurrentUser={setCurrentUser} signup={signup} />} />
+                <Route path="/insects" element={<Shopping currentUser={currentUser} />} />
+                <Route path="/checkout" element={<Shopping currentUser={currentUser} />} />
                 <Route element={<Navigate to="/" />} />
             </Routes>
         </div>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useNavigate, Link, NavLink } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 import "./Navbar.css";
@@ -11,8 +11,7 @@ import "./Navbar.css";
  * Rendered by App.
  */
 
-function Navigation({ logout }) {
-    const { currentUser } = useContext(UserContext);
+function Navigation({ currentUser, logout }) {
     const navigate = useNavigate();
 
     function handleHomeClick() {
