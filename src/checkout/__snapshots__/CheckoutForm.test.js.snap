@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutForm renders correctly on initial load 1`] = `
+<DocumentFragment>
+  <form
+    class="checkout-form"
+  >
+    <div>
+      <label
+        for="phone"
+      >
+        Phone:
+      </label>
+      <input
+        class="checkout-form"
+        id="phone"
+        maxlength="30"
+        minlength="1"
+        name="phone"
+        required=""
+        type="text"
+        value=""
+      />
+    </div>
+    <div>
+      <label
+        for="delivery_address"
+      >
+        Delivery Address:
+      </label>
+      <input
+        id="delivery_address"
+        maxlength="10"
+        minlength="1"
+        name="delivery_address"
+        required=""
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</DocumentFragment>
+`;

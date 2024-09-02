@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <h1
+      id="title"
+    >
+      Sid's Fuzzy Phids
+    </h1>
+    <nav
+      id="nav-container"
+    >
+      <ul
+        id="nav-list"
+      >
+        <li>
+          Home
+        </li>
+        <li>
+          <div>
+            Browse
+          </div>
+        </li>
+        <li>
+          <div>
+            Check-Out
+          </div>
+        </li>
+        <li>
+          <div>
+            Link
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</DocumentFragment>
+`;

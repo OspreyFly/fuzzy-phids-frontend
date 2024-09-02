@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutList renders correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="Checkout-list"
+    >
+      <div
+        class="InsectCard card"
+      >
+        <div
+          class="card-body"
+        >
+          <h6
+            class="card-title"
+          >
+            a
+          </h6>
+          <h3>
+            $1
+          </h3>
+          <button
+            class="animated-minus-button"
+          >
+            -
+          </button>
+        </div>
+      </div>
+      <div
+        class="InsectCard card"
+      >
+        <div
+          class="card-body"
+        >
+          <h6
+            class="card-title"
+          >
+            b
+          </h6>
+          <h3>
+            $1
+          </h3>
+          <button
+            class="animated-minus-button"
+          >
+            -
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="total-price"
+    />
+    <form
+      class="checkout-form"
+    >
+      <div>
+        <label
+          for="phone"
+        >
+          Phone:
+        </label>
+        <input
+          class="checkout-form"
+          id="phone"
+          maxlength="30"
+          minlength="1"
+          name="phone"
+          required=""
+          type="text"
+          value=""
+        />
+      </div>
+      <div>
+        <label
+          for="delivery_address"
+        >
+          Delivery Address:
+        </label>
+        <input
+          id="delivery_address"
+          maxlength="10"
+          minlength="1"
+          name="delivery_address"
+          required=""
+          type="text"
+          value=""
+        />
+      </div>
+      <button
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;
