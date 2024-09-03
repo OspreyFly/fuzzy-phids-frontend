@@ -75,7 +75,7 @@ function SignupForm({ signup }) {
                     <div className="card-body">
                         <form onSubmit={handleSubmit}>
                             <div className="form-group">
-                                <label>Username</label>
+                                <label>Username:</label>
                                 <input
                                     name="username"
                                     className="form-control"
@@ -84,7 +84,7 @@ function SignupForm({ signup }) {
                                 />
                             </div>
                             <div className="form-group">
-                                <label>Password</label>
+                                <label>Password:</label>
                                 <input
                                     type="password"
                                     name="password"
@@ -94,7 +94,7 @@ function SignupForm({ signup }) {
                                 />
                             </div>
                             <div className="form-group">
-                                <label>Email</label>
+                                <label>Email:</label>
                                 <input
                                     type="email"
                                     name="email"
