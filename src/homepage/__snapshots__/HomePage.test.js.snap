@@ -11,10 +11,10 @@ exports[`HomePage renders correctly 1`] = `
   </h3>
   <iframe
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen={true}
-    frameborder="0"
+    allowFullScreen={true}
+    frameBorder="0"
     height="315"
-    referrerpolicy="strict-origin-when-cross-origin"
+    referrerPolicy="strict-origin-when-cross-origin"
     src="https://www.youtube.com/embed/5qkzwG2lLPc?si=kkbU2B55-O3Askgb"
     title="YouTube video player"
     width="560"
@@ -26,10 +26,10 @@ exports[`HomePage renders correctly 1`] = `
   </h3>
   <iframe
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen={true}
-    frameborder="0"
+    allowFullScreen={true}
+    frameBorder="0"
     height="315"
-    referrerpolicy="strict-origin-when-cross-origin"
+    referrerPolicy="strict-origin-when-cross-origin"
     src="https://www.youtube.com/embed/Dgbci0GC1vk?si=3H-WPTdLiAYo2M-U"
     title="YouTube video player"
     width="560"
